@@ -1,6 +1,6 @@
 Team: Group-7
       Dmitriy Sizionov: 2054923 
-      Guo Tang: 
+      Guo Tang: 2056042
       Jingchen Yang: 2085260
 
 Tasks completed in the past week:
