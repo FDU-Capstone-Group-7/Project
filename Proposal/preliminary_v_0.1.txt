@@ -1,0 +1,110 @@
+1. Introduction
+
+The content of this section should explain the following: 
+What is the problem you are trying to solve? 
+
+Our project should create a platform where game developers can share their early-stage games for testing/ feedback gathering. Players would have a chance to familiarize themselves and test games before game release. Platform also will provide summary about the game based on players feedback by gathering them and summarizing via AI in a short article. That helps players to have short overview and also game developers get summary of feedbacks. 
+
+Why is this an important problem? 
+
+Small indie game studious do not have place where they can easily test and get feedback about the game from players on the pre-release stage.
+
+Why is this a challenging problem? 
+
+Because there is a significant barrier for small game studious to develop the game. They don’t have excise resources beside developing a game to communicate with players and gather their feedback.
+
+What will you be developing to address the problem? 
+
+The idea to develop a website that game studious and players can use for gathering feedback and observe pre-released games.
+
+Who are the intended users of your product, and how will the product benefit them? 
+
+Game studious: benefit to have a place where they will get a feedback about the game on pre-released stage
+Players: benefit to have a short game observation, can leave a feedback, can play in pre-released games
+
+
+2. Related Work
+
+What are the existing approaches to solving this problem? 
+
+Current approach for game developers to send direct personal invitation to the players to gather their feedback, analyze it, and incorporate changes after. Or skipping the part with public tests and release game without it. 
+Players familiarize with games after release without any objective information about the game or should read many comments to make up their opinion. 
+
+How will your approach be different/better? 
+
+We going to create a place where small games studious and players can meet each other and share their projects, feedbacks and get short overview about the pre-released games.
+
+3. Approach
+
+How will you solve the problem? 
+
+We going to create website. To give possibility to Studious register an account, publish their materials, games news, announcements. Players can register their accounts, leave a comment about the games on the website. AI will collect comments and create short summary for players and game studious.
+
+What product will you be building? 
+
+The Website as a front-end interface and database (game studious and players accounts). Additionally, we will use AI API to summarize feedback for players and game studious.
+
+What is the software architecture? 
+
+What are the algorithms involved? 
+
+Create constructors for new accounts, comments, posts. Sort, store, transfer data from website to database and back.
+
+How will you be implementing it? 
+
+We will create the Website for the game studious and players. Gather their information in database and publish it on the website.
+ 
+What hardware will you use and why? 
+
+We will use only cloud services for this project since we don’t have any common infrastructure to develop and deploy our project.
+
+What operating system will you use and why? 
+
+It is web development therefore website should be OS neutral.
+
+What programming language will you use and why? 
+
+Need to choose what we going to use for website building Python (Django and Flask) or JavaScript (React) – it is the most popular programming languages in web development
+Database: MySQL or SQLite ---- SQL is the standard for database management
+
+What libraries will you use and why? 
+
+Depends from the language and database we choose.
+
+4. Deliverables
+
+State the deliverables (documents, features implemented in code, etc.) for EACH week. 
+
+We going to prepare various diagrams (use case, class, state, sequence diagrams) and database architecture (tables) to split the particular tasks during development (ensure that we are on the one page in terms of necessary steps to be done)
+
+5. Evaluation
+
+How will you define success? E.g., accuracy, speed, ease of use, user adoption, user ratings. 
+
+We will use auto-test for the website to test functionality and also user feedback for usability.
+
+How will you measure success? E.g., case studies, benchmarking. 
+
+Firstly, all features should work without errors. Secondly, website should be intuitive and user friendly. 
+
+6. Risks
+
+What can go wrong? 
+
+Volume of work might exceed our capabilities (time, skills, experience) 
+
+What will you do to minimize the chances of things going wrong? 
+
+We invest time in documentation aspect. To have clear plan what we need to do and how we going to implement it. It should give us clear pace to complete the project. 
+
+What will you do if things still go wrong? 
+
+We going to have regular and close interaction during the full length of the project. (regular meetings and on-hoc calls)
+
+7. Conclusion
+
+Summarize the report. 
+
+8. References
+
+
