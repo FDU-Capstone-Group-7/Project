@@ -17,106 +17,45 @@ the players will familiarize themselves with the pre-released indie game info, i
 
 3. Approach
 
-**How will you solve the problem? **
-
 The initial project is a platform (web application) where game developers can share their games in the development stage for testing/feedback gathering. 
-
-
 This web application will primarily serve independent game developers or small indie game studios. Main focus is on facilitating early-stage game development content.
-  Independent game developers will be able to create a homepage for their games. On this page, developers can post descriptions of the game, patch notes, playtest events, trailers, and more. Developers with needs can upload stage-specific game test builds for player testing, and quickly receive ratings and feedback from interested players about that stage's results, thus improving the final product more effectively. The platform would allow developers to post crowdfunding initiatives or raise funds by promoting (while this is not a project feature to facilitate it)
-  Players would have a chance to familiarize themselves and test games before game release. They would be able to browse and track the development progress of games they are interested in, participate in testing, and directly contact developers through the platform to leave suggestions that help improve the game.
- The platform will provide a summary of the games based on the players feedback by gathering them and summarizing it via AI in a short article for each game. That helps players to have a brief overview of the game. And also it gives game developers a summary of feedbacks.
+Independent game developers will be able to create a homepage for their games. On this page, developers can post descriptions of the game, patch notes, playtest events, trailers, and more. Developers with needs can upload stage-specific game test builds for player testing, and quickly receive ratings and feedback from interested players about that stage's results, thus improving the final product more effectively.
+Players would have a chance to familiarize themselves and test games before game release. They would be able to browse and track the development progress of games they are interested in, participate in testing, and directly contact developers through the platform to leave suggestions that help improve the game.
+The platform will provide a summary of the games based on the players feedback by gathering them and summarizing it via AI in a short article for each game. That helps players to have a brief overview of the game. And also it gives game developers a summary of feedbacks.
 
+The project aims to adopt an architecture similar to MVC (Model View Controller) for building a platform. It's a software design pattern commonly used in web development by devideing interface by 3 interconnected elements. According to Figure 1 (Use Case Diagram), it is planned to have 2 interfaces for Game Developers and Players. Additionally, it is planned to use one of the AI's API to process a Players input (ratings and comments) to generate data insights. To execute this archetecture are developed a Class Diagram illustrated as Figure 2 (Class Diagram). Main actors will have their own entites with related methods. Furtehrmore, the project will include Database archetecture represented in Figure 3 (Database Architecture). Algorithms might be involving some search algorithms like searching based on keywords and filter search results on given fields like game genre or developers. 
 
-
-Our project should create a platform where game developers can share their early-stage games for testing/ feedback gathering. Players would have a chance to familiarize themselves and test games before game release. Platform also will provide summary about the game based on players feedback by gathering them and summarizing via AI in a short article. That helps players to have short overview and also game developers get summary of feedbacks.
-
-Guo: As an additional note to the above, this web application will primarily serve independent game developers or small indie game studios. It aims to integrate scattered indie game resources while providing a platform for developers with limited budgets and scales to connect with potential players during the game development process. Independent game developers will be able to create a homepage for their games in development. On this page, developers can post descriptions of the game, patch notes, playtest events, trailers, and more. Developers with needs can upload stage-specific game test builds for player testing, and quickly receive ratings and feedback from interested players about that stage's results, thus improving the final product more effectively. Players can browse and track the development progress of games they are interested in, participate in testing, and directly contact developers through the platform to leave suggestions that help improve the game.
-
-JingChen: Platform focus on facilitating early stage and Indie game development. The platform could help developer crowdfunding or raise fund by promoting.
-
-
-
-
-
-
-We going to create website. To give possibility to Studious register an account, publish their materials, games news, announcements. Players can register their accounts, leave a comment about the games on the website. AI will collect comments and create short summary for players and game studious.
-
-**What product will you be building? **
-
-The Website as a front-end interface and database (game studious and players accounts). Additionally, we will use AI API to summarize feedback for players and game studious.
-
-**What is the software architecture?**
-
-Guo：We currently plan to adopt an architecture similar to MVC for building our platform.
-
-**What are the algorithms involved? **
-
-Create constructors for new accounts, comments, posts. Sort, store, transfer data from website to database and back.
-
-Guo: it might be involving some search algorithms like searching based on keywords and filter search results on given fields like game genre or developers.
-
-**How will you be implementing it? **
-
-We will create the Website for the game studious and players. Gather their information in database and publish it on the website.
- 
-**What hardware will you use and why? **
-
-We will use only cloud services for this project since we don’t have any common infrastructure to develop and deploy our project.
-
-**What operating system will you use and why? **
-
-It is web development therefore website should be OS neutral.
-
-JingChen: Mac OS, Windows 10 (Linux) As the all teammates are familiar with Mac OS and Windows, and most required development tools has been installed.
-Ubuntu:User friendly, large community, Support for multiple development tools
-
-
-**What programming language will you use and why? **
-
-Need to choose what we going to use for website building Python (Django and Flask) or JavaScript (React) – it is the most popular programming languages in web development
-Database: MySQL or SQLite ---- SQL is the standard for database management
-
-Guo: For the framework, currently we are evaluating between Django and ASP.net
-JingChen: HTML for website layout CSS for styling .js for interaction C# or java for backend SQL for database 
-
-**What libraries will you use and why? **
-
-Depends from the language and database we choose.
-
-JingChen:
-BootStrap:for webpage template, 
-React.js: interactive UI
-Me and Guo developed a ready-to-ues ASP.NET based CRUD template last term which could be very useful for the website realization.
-Django(Python) and Spring Boot(Java) could be optional.
-
+The project will be performend with the following Software stack:
+The Framework will be implimented with Django Web Framework since is a free and open-source, Python-based web framework that runs on a web server. It fully supports project MVC architecture concept. Additionally, it is tailored to use relational database which is planned to use.   
+Front-End will include BootStrap to manage a web application to impliment a website HTML and CSS programming languages. To enchance a web apllication usability the front-end will include React.js that uses JavaScrip language for styling websites.  
+For the Back-Edn project will use a Python as a major programming language with support of SQL to communicate with Database. A Database will be implemented in MySQL to store the data as an relational database. Additionally, the project will include externatl APIs to interact with AI to process data. 
 
 4. Deliverables
 
-**State the deliverables (documents, features implemented in code, etc.) for EACH week. **
+The project includes the following diagrams: use case, class(entites), state, sequence diagrams. The database architecture consist of tables and access matrix to manage the data.
+Major mielstones are Midterm Demo version submission and Final project submission. Meantime, the deliverables inlude also other interim milestones. For the project execution task and deliverables plan to be distributed on the weekly team meeting. 
 
-We going to prepare various diagrams (use case, class, state, sequence diagrams) and database architecture (tables) to split the particular tasks during development (ensure that we are on the one page in terms of necessary steps to be done)
+Sep 4 | Week 1 | Project idea generation 
+Sep 11 | Week 2 | Project concept developing
+Sep 18 | Week 3 | Preparation of Documentation 
+Sep 25 | Week 4 | Establishment of Enviroment, Framework, Database and Development Tools
+Oct 2 | Week 5 | Creation of main Entities, Methods, Database Tables
+Oct 9 | Week 6 | Simple front-end concept preparation
+Oct 16 | Week 7 | Demo version demonstartion and Mid-term-report submission
+Oct 23 | Week 9 | Development of non-essential features of the project
+Oct 30 | Week 10 | Enchance front-end development
+Nov 6 | Week 11 | Testing and debugging
+Nov 13 | Week 12 | Testing and debugging
+Nov 20 | Week 13 | Preparation of presentation and the final report
+Nov 27 | Week 14 | Presentation and final report submission
 
-JingChen:
-1.WebApp source code, 
-2.usage and maintaining instruction, 
-3.Web link deployed on git or other platforms.
-
+To communicate and maintaine efficient project execution the project team plan to keep daily contact in established communication channels in messengers, GITHub and other resources.   
 
 5. Evaluation
 
-**How will you define success? E.g., accuracy, speed, ease of use, user adoption, user ratings. **
+Evaluation of deliverabled tasks is planned to perform by conductiong weekly cross team discussion and presentation of functionality. Additionally, it is planned to have a 2 weeks of testing and debugging to achive high quality product at the end of the project. To achive this the team plan to develop and perform auto-test for the web application in order to test functionality. Additionally, the team plan to make user testing gather feedback about usability and user product satisfaction. It is planned to assess the core web application functionalities for non-error conditions. And also the user interface should be simple and aesthetically pleasing, making it easy for new users to get started and for experienced users to navigate quickly.
 
-We will use auto-test for the website to test functionality and also user feedback for usability.
-
-Guo：Core functionalities need to be implemented without errors; the user interface should be simple and aesthetically pleasing, making it easy for new users to get started and for experienced users to navigate quickly.
-
-
-**How will you measure success? E.g., case studies, benchmarking. **
-
-Firstly, all features should work without errors. Secondly, website should be intuitive and user friendly. 
-
-Guo：Before syncing each version to the main branch on GitHub, we will conduct local testing to ensure that the core functionalities run smoothly and to define and test various exceptions. After syncing, we will perform additional manual testing to ensure the stability of the current version.
+As a bechmark for evaluation the product has to follow those stadards:  
 
 1. Game Browsing and Discovery
 Benchmark 1: Game Search Functionality
@@ -130,27 +69,13 @@ Benchmark 2.1: Game Upload Time
 Benchmark 2.2: Game Metadata Submission
 •	Metric: Developers should be able to upload metadata (game title, description, screenshots, etc.) within 1 minute without errors.
 
-
-
 6. Risks 
 
-**What can go wrong? **
-
-Volume of work might exceed our capabilities (time, skills, experience)
-Guo:  switch to Django might cause high learning curve because we don’t have much experience with this framework before; The storage solution for the website(for developers to upload videos and  compressed files) might also be a potential issue because we don’t have experience on such large scaled storage solutions previously and it might requires paid cloud storage plan.
-
-**What will you do to minimize the chances of things going wrong? **
-
-We invest time in documentation aspect. To have clear plan what we need to do and how we going to implement it. It should give us clear pace to complete the project. 
-
-Guo:  We are still evaluating the framework we will choose. If we decide on Django, we will first create a quick prototype to validate the feasibility of the process. Regarding the storage solution, we might not to handle storage on our own website. Instead, we may require developers to upload their own cloud storage links and video platform links. 
-
-
-**What will you do if things still go wrong? **
-
-We going to have regular and close interaction during the full length of the project. (regular meetings and on-hoc calls)
-
-Guo: and we will have alternative plans which might be easier on technique aspect such as the storage plan above.
+The project major risks are the diss-sichronisation within the teamm, complexity of software stack, and size of the project. To mitigate those risks the team plan to implement following measures:
+- The team plan to develope documentation. In order to have clear plan what is the scope of the project and how it is going to be delivered. This approach aims to provide clear project structure with the ability to nominate a specific tasks to ech team member and set deadline for delivery.
+- Risk of stack complexity is planned to be mitigated by team members expirience in various topics. Team has an expirience in web development and database maintenance. All are familiar with Python programming language and knowlange in front-end syntacys. Also team have a hands on expirience with SQL in Databases.
+- Size of the proect is also an risk for the project completion, but mitigation measure is to outline the project scope in details before the kickoff and to be flexible during the project to adjust and allocate team resources in required direction. 
+The team is going to have regular and close interaction during the full length of the project to be able to deliver the project in time and in accordance with high standards in softaware industry. 
 
 7. Conclusion
 
