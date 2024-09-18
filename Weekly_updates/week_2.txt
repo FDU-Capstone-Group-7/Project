@@ -9,21 +9,21 @@ Tasks completed in the past week:
 - Use Case Diagram
 - Class diagram
 - 5 Sequence Diagrams
-- DataBase diagram
-- "Proposal" report submition
+- DataBase Architechture diagram
+- "Proposal" report prepared by 95%
 
 Tasks to be completed in the upcoming week:
-
-- Access matrix
-- State diagram
+- Submit Proposal
+- Prepare Access matrix and State diagram
 - DataBase installation and tables creation
-- Create project roadmap (split project for 2 phases (Midterm and Final). Assign tasks and set deadlines for coding parts)
+- Assign tasks and set deadlines for coding part. Kickoff coding.
 
 What went well:
-We delivered tasks as planned. Communication is well maintained. 
+- We delivered tasks as planned. 
+- Communication is well maintained.
 
 What did not go so well:
-
+- n/a
 
 Mitigation steps for things that did not go so well:
-
+- n/a
