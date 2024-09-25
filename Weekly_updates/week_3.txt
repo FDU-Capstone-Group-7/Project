@@ -5,26 +5,25 @@ Guo Tang: 2056042
 Jingchen Yang: 2085260
 
 Tasks completed in the past week:
-- Proposal submitted
-- DataBase installation and tables creation
-- Coding part was started
-- Functionality developed:
+
+Proposal submitted
+Database approach was defined and tested
+Coding part was started
+Functionality developed:
   - Create and edit game profile
   - User registration and login
   - Group registration
-
 Tasks to be completed in the upcoming week:
-- Prepare Access matrix and State diagram - delayed from the last week
-- Functionality going to be developed:
+
+Prepare Access matrix and State diagram - delayed from the last week
+Functionality going to be developed:
   - Leave comment 
   - Provide rating score
-  
-
 What went well:
-- Discuss several approaches of application deployment
-- Testing prototype with Django 
-- Communication is well maintained
 
+Discussed several approaches of application deployment
+Tested a prototype with Django 
+Communication is well maintained
 What did not go so well:
 - n/a
 
