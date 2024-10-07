@@ -18,7 +18,8 @@ brew install mysql pkg-config
 3. CLI : cd Code/Source_code
 4. CLI : pip install -r requirements.txt
 5. CLI : docker-compose up
-6. CLI : python3 manage.py runserver
+6. CLI : python3 manage.py migrate
+7. CLI : python3 manage.py runserver
 
 Open a browser and go to: http://127.0.0.1:8000/admin
 Log in : super_user - 12345
