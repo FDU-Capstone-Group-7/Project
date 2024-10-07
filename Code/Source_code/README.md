@@ -19,10 +19,15 @@ brew install mysql pkg-config
 4. CLI : pip install -r requirements.txt
 5. CLI : docker-compose up
 6. CLI : python3 manage.py migrate
-7. CLI : python3 manage.py runserver
+7. CLI : python3 manage.py makemigrations Indie_Game
+8. CLI : python3 manage.py createsuperuser (set your User_Name and Password)
+9. CLI : python3 manage.py runserver
 
 Open a browser and go to: http://127.0.0.1:8000/admin
-Log in : super_user - 12345
+
+P.S. If terminal tells you that Port is already occupied. Kill the process is running in this port by executing: 
+1. lsof -i :8000       ##### to find the process ID
+2. kill -9 <PID>       ##### <PID> is the second column in the row
 
 ###########################################
 
