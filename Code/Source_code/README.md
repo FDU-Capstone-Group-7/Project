@@ -8,7 +8,7 @@
 2.Install Python 3 using Homebrew CLI: 
 brew install python
 
-3.Install config package with Brew
+3.Install config package with Brew CLI:
 brew install mysql pkg-config
 
 ###########################################
