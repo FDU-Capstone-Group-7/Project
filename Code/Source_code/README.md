@@ -31,6 +31,15 @@ P.S. If terminal tells you that Port is already occupied. Kill the process is ru
 
 ###########################################
 
+Helpful docker and MYsql commands: 
+
+docker ps
+docker exec -it 'name of your image' /bin/bash
+mysql -u root -p
+show databases;
+use 'database'
+show tables;
+SELECT * FROM tables;
 
 /////////settings for image creation/////////////
 docker run -d \
