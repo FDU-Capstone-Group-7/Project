@@ -27,7 +27,7 @@ Open a browser and go to: http://127.0.0.1:8000/admin
 
 P.S. If terminal tells you that Port is already occupied. Kill the process is running in this port by executing: 
 1. lsof -i :8000       ##### to find the process ID
-2. kill -9 <PID>       ##### <PID> is the second column in the row
+2. kill -9 'PID'       ##### 'PID' is the second column in the row
 
 ###########################################
 
