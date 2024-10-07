@@ -5,8 +5,11 @@
 1.Install Homebrew CLI:
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-2.install Python 3 using Homebrew CLI: 
+2.Install Python 3 using Homebrew CLI: 
 brew install python
+
+3.Install config package with Brew
+brew install mysql pkg-config
 
 ###########################################
 
