@@ -1,0 +1,335 @@
+
+.game-cover{
+    position: flex;
+    width: 350px;
+    height: 450px;
+    margin-top: 200px;
+}
+
+.game-cover .card {
+    width: 100%;
+    height: 100%;
+}
+
+.game-cover .card-body{
+    padding: 0%;
+}
+
+.game-cover .card-body img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.tabs{
+    position: flex;
+    width: 879px;
+    height: 660px;
+    margin-top: 105px;
+}
+
+/* 
+.nav-item .nav-link {
+
+    background-color: #7424b5;
+    border-radius: 5px;
+    margin-right: 5px; 
+} */
+
+
+
+.tab-content-box {
+    height: 600px; 
+    min-width: 100%; 
+    padding: 20px; 
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tab-pane .ratio {
+    width: 100%; 
+}
+
+
+.tab-content-box .game-description{
+    height: 150px; 
+    overflow: auto; 
+}
+
+
+.game-cover{
+    position: flex;
+    width: 350px;
+    height: 450px;
+    margin-top: 200px;
+}
+
+.game-cover .card {
+    width: 100%;
+    height: 100%;
+}
+
+.game-cover .card-body{
+    padding: 0%;
+}
+
+.game-cover .card-body img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.tabs{
+    position: flex;
+    width: 879px;
+    height: 660px;
+    margin-top: 105px;
+}
+
+
+
+
+.tab-content-box {
+    height: 600px; 
+    min-width: 100%; 
+    padding: 20px; 
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tab-content-box .game-description{
+    height: 150px; 
+    overflow: auto; 
+}
+
+.tab-pane .ratio {
+    width: 100%; 
+}
+
+
+
+.carousel.slide{
+    height: 500px; 
+    width: 100%;
+    overflow: hidden;
+    margin-top: 20px; 
+}
+
+.carousel-inner .carousel-item {
+    aspect-ratio: 16 / 9; 
+}
+
+.carousel-inner .carousel-item img {
+    width: 100%; 
+    height: 100%;
+    object-fit: contain;
+    max-height: 100%; 
+    max-width: 100%; 
+}
+
+
+
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: rgba(255, 255, 255, 0.2);  
+
+}
+
+
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: rgba(255, 255, 255, 0.5);  /* 按钮背景半透明 */
+
+}
+
+
+
+
+
+
+
+
+
+
+
+.updates-area{
+    margin-top: 100px;
+}
+
+.accordion-body .img-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px; 
+}
+
+.accordion-body .img-fluid {
+    aspect-ratio: 16/9;
+}
+
+.accordion-body .img-caption {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    width: 100%;
+    padding: 5px;
+}
+
+.patch-notes {
+    height: 300px; 
+    overflow: auto; 
+}
+
+
+
+.rating-area{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    padding: 10%;
+    margin: 100px;
+
+
+}
+.rating {
+    cursor: pointer;
+}
+
+.star {
+    font-size: 24px; 
+    color: gray; 
+    margin-right: 5px; 
+}
+
+.star.selected,
+.star:hover,
+.star:hover ~ .star {
+    color: gold; 
+}
+
+
+
+
+
+.update-feedback {
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.update-feedback h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.update-feedback form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+
+
+
+
+
+
+.forum .comment-form .card{
+    border-radius: 15px;
+}
+.forum .comment-form .card label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.forum .comment-form .card select,
+.forum .comment-form .card textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+
+
+
+
+.comments-area .card{
+    border-radius: 15px;
+}
+
+.comment {
+    border-bottom: 1px solid rgba(146, 60, 238, 0.2);
+    padding: 15px 0;
+    margin-top: 20px;
+}
+
+.comment:last-child {
+    border-bottom: none;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    
+}
+
+.comment-content {
+    padding: 20px;
+    
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.username {
+    font-weight: bold;
+    margin-right: auto;
+}
+
+.timestamp,
+.version {
+    font-size: 0.9rem;
+    margin-left: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

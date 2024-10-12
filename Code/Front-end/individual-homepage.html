@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indie Game Community</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/theme.css" rel="stylesheet">
+    <link href="assets/css/homepage.css" rel="stylesheet">
+</head>
+<body>
+    <div class="banner">
+        <img src="assets/images/banner.jpg" class="img-fluid w-100" alt="Banner Image">
+    </div>
+
+
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">Home
+                  <span class="visually-hidden">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Separated link</a>
+                </div>
+              </li>
+            </ul>
+            <div class="d-flex">
+              <a class="btn btn-light me-2" href="create-new-homepage.html">Create New</a>
+              <a class="btn btn-secondary" href="manage-my-games.html">Manage My Games</a>
+          </div>
+          </div>
+        </div>
+      </nav>
+        </div>
+
+
+
+        <div class="container" >
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="game-cover">
+                        <div class="card border-light">
+                            <div class="card-body">
+                                <img src="assets/images/example.png" class="card-img" alt="Example Image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="col-md-8">
+                    <div class="tabs">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <input type="radio" class="btn-check" name="btnradio" id="home-tab" autocomplete="off" checked="">
+                                <label class="btn btn-outline-primary active" for="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Info</label>                                
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <input type="radio" class="btn-check" name="btnradio" id="trailer-tab" autocomplete="off" checked="">
+                                <label class="btn btn-outline-primary" for="trailer-tab" data-bs-toggle="tab" data-bs-target="#trailer" type="button" role="tab" aria-controls="trailer" aria-selected="false">Trailer</label> 
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <input type="radio" class="btn-check" name="btnradio" id="arts-tab" autocomplete="off" checked="">
+                                <label class="btn btn-outline-primary" for="arts-tab" data-bs-toggle="tab" data-bs-target="#arts" type="button" role="tab" aria-controls="arts" aria-selected="false">Arts</label> 
+                            </li>
+                            </li>
+                        </ul>
+                        
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active tab-content-box" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                                <div class="mt-3 mb-4" style="padding: 20px;">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h1 style="font-size: 60px;">Fortnite</h1>
+                                        <div class="ms-auto"> 
+                                            <span class="badge rounded-pill bg-primary">FPS</span>
+                                            <span class="badge rounded-pill bg-danger">Multi-player</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <p>                                     
+                                        <strong>Publisher:</strong> Blizzard
+                                        <!-- <a href="contact.html" class="btn btn-secondary btn-sm ms-2">Contact Me</a> -->
+                                    
+                                    </p>
+
+                                    <div class="mt-2 mb-3">
+                                        <h3>Progress</h3>
+                                        <div class="progress">
+                                            <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                            </div>
+
+                                <div class="mt-2" style="padding: 20px;">
+                                    <h4>Description:</h4>
+                                    <div class="game-description">
+                                        <p> test test test.</p>  
+                                        <p> test test test.</p> 
+                                        <p> test test test.</p> 
+                                        <p> test test test.</p> 
+                                        <p> test test test.</p> 
+                                        <p> test test test.</p> 
+                                    </div>
+                                </div>
+
+                         </div>
+                        
+                            <div class="tab-pane fade tab-content-box" id="trailer" role="tabpanel" aria-labelledby="trailer-tab">
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="https://www.youtube.com/embed/example1" title="Video 1" allowfullscreen></iframe>
+                                </div>
+                            </div>
+
+
+                            <div class="tab-pane fade tab-content-box" id="arts" role="tabpanel" aria-labelledby="arts-tab">
+                                <div id="artsCarousel" class="carousel slide" data-bs-ride="false">
+                                    <div class="carousel-inner"> 
+                                            <div class="carousel-item active">
+                                                <img src="assets/images/banner.jpg"  alt="Artwork">
+                                            </div>
+
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#artsCarousel" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#artsCarousel" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <section class="updates-area">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h1>Updates</h1>
+                    <button type="submit" class="btn btn-primary">+ Add New</button>
+
+                </div>
+                <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            Accordion Item #1
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" >
+                            <div class="accordion-body">
+                                <div class="d-flex justify-content-between align-items-center mb-5">
+                                    <button type="submit" class="btn btn-secondary">Edit</button>
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </div>
+
+                                <div class="mb-5">
+                                    <h1>Update Date:</h1> <span id="update-date">2024-09-27</span>
+                                </div>
+                                <div class="mb-5">
+                                    <h1>Patch Notes:</h1>
+                                    <div class="patch-notes"> 
+                                        <p id="patch-notes">
+                                            
+在一个阳光明媚的早晨，城市的街道逐渐被人流填满，商店的橱窗反射出耀眼的光芒。空气中弥漫着新鲜的咖啡香，伴随着烘焙面包的诱人气息，使得路过的行人不禁停下脚步，流连忘返。小孩们在公园里嬉戏，欢声笑语充满了整个空间，仿佛把周围的喧嚣都抛在了脑后。老人在长椅上静静地看着这一切，脸上挂着满足的微笑，仿佛在回忆自己年轻时的快乐时光。远处，咖啡馆的门口坐着几位年轻的艺术家，他们聚精会神地在素描本上描绘着眼前的景象，每一笔都充满了对生活的热爱。时光仿佛在此刻凝固，每一个细节都变得格外珍贵。这样的日子，让人不由得想要珍惜生活中的每一个瞬间，无论是平凡的日常，还是难得的相聚，都是构成生命的美好画卷。生活的点滴如同调色板上的颜色，虽各自独立，却共同绘制出了一幅丰富多彩的画面。人们在这里交织，形成了一个个温暖的故事，这些故事如同涓涓细流，汇聚成了城市的灵魂。
+
+                                        </p>
+
+                                    </div>
+                                </div>
+                                <div class=" mb-5">
+                                    <h1><strong>Download playable build:</strong></h1>
+                                    <a href="download-link.zip" class="btn btn-lg btn-primary mt-3">Download</a> 
+                                    
+                                </div>
+                                <div class="mb-5">
+                                    <h1><strong>Video</strong></h1>
+                                    <div class="ratio ratio-16x9">
+                                        <iframe src="https://www.youtube.com/embed/example-video" title="Video" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                                <div class="mb-5">
+                                    <h1><strong>Screenshots/Arts</strong></h1>
+
+                                    <div class="d-flex flex-wrap justify-content-center mt-5">
+                                        <div class="img-container mb-2"> 
+                                            <img src="assets/images/example.png" class="img-fluid" alt="Example Image 1">
+                                            <div class="img-caption">figue1...</div> 
+                                        </div>
+                                        <div class="img-container mb-2"> 
+                                            <img src="assets/images/banner.jpg" class="img-fluid" alt="Example Image 2">
+                                            <div class="img-caption">figure2...</div> 
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="rating-area mb-5">
+                                    <h1><strong>Rating</strong></h1>
+                                    <div class="rating" id="rating">
+                                        <span class="star" data-value="1">&#9733;</span>
+                                        <span class="star" data-value="2">&#9733;</span>
+                                        <span class="star" data-value="3">&#9733;</span>
+                                        <span class="star" data-value="4">&#9733;</span>
+                                        <span class="star" data-value="5">&#9733;</span>
+                                    </div>
+                                    <div id="rating-output">Rating: 0</div>
+                                    <button id="submit-rating btn-primary" disabled>Submit</button>
+
+                                    
+                                    <section class="update-feedback mt-5">
+                                        <form>
+                                            <h2>Feedback</h2>
+                                            <p>Please let us know what you think about this update.</p>
+                                        
+                                                <div class="mb-3">
+                                                    <label for="feedback-content" class="form-label">Feedback</label>
+                                                    <textarea class="form-control" id="feedback-content" name="feedback" rows="5" placeholder="Your Feedback"></textarea>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                                        </form>
+                                    </section>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Accordion Item #2
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample" >
+                        <div class="accordion-body">
+                        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                        Accordion Item #3
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample" >
+                        <div class="accordion-body">
+                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </section>
+
+
+                <section class="forum mt-5 mb-5">
+                    
+                    <div class="comment-form">
+                        <div class="card border-primary mb-3">
+                            <h3 class="card-header">Leave Comments</h3>
+                            <div class="card-body">
+                    
+                                <form>                                   
+                                    <div class="mb-3">
+                                        <label for="version" class="form-label">Version</label>
+                                        <select id="version" name="version" class="form-control">
+                                            <option value="overall">Overall</option>
+                                            <option value="update1">Update 1</option>
+                                            <option value="update2">Update 2</option>
+                                        </select>
+                                    </div>
+                                
+                                    <div class="mb-3">
+                                        <label for="content" class="form-label">Comment</label>
+                                        <textarea id="content" name="content" class="form-control" rows="4" placeholder="Write your message here..."></textarea>
+                                    </div>
+                                
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="comments-area mt-5">
+                        <div class="card border-primary mb-3">
+                            <h1 class="card-header">Forum</h1>
+                            <div class="card-body">
+                                <div class="comment">
+                                    <div class="comment-header">
+                                        <img src="assets/images/sampleicon.png" alt="User2" class="avatar">
+                                        <span class="username">User2</span>
+                                        <span class="timestamp">2024-09-27 15:00</span>
+                                        <span class="version">Update 1</span>
+                                    </div>
+                                    <div class="comment-content">
+                                        <p>User1 here, loving the new features in update 1!</p>
+                                    </div>
+                                </div>
+
+                                    <div class="comment">
+                                        <div class="comment-header">
+                                            <img src="assets/images/sampleicon.png" alt="User2" class="avatar">
+                                            <span class="username">User2</span>
+                                            <span class="timestamp">2024-09-27 15:00</span>
+                                            <span class="version">Update 1</span>
+                                        </div>
+                                        <div class="comment-content">
+                                            <p>hate the new features in update2.</p>
+                                        </div>
+                                    </div>
+                                    <div class="comment">
+                                        <div class="comment-header">
+                                            <img src="assets/images/sampleicon.png" alt="User2" class="avatar">
+                                            <span class="username">User2</span>
+                                            <span class="timestamp">2024-09-27 15:00</span>
+                                            <span class="version">Update 1</span>
+                                        </div>
+                                        <div class="comment-content">
+                                            <p>no comments.</p>
+                                        </div>
+                                    </div>
+
+                                   
+                            </div>
+                        </div>
+                 </div>
+             </section>
+
+     </div>
+       
+          
+           
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="javascript/rating.js"></script>
+
+</body>
+</html>
+
+
+
+
