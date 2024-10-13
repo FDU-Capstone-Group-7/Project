@@ -1,0 +1,273 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indie Game Community</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'Indie_Game/css/mainpage.css' %}" rel="stylesheet">
+    <link href="{% static 'Indie_Game/css/theme.css' %}" rel="stylesheet">
+
+</head>
+<body>
+    <div class="banner">  
+        <img src="{% static 'Indie_Game/images/banner.jpg' %}" class="img-fluid w-100" alt="Banner Image">
+    </div>
+
+
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'home' %}">PixelPals</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item me-5">
+                  <span class="visually-hidden">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item me-5">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+              </li>
+              {% if user.is_authenticated and user.userprofile.account_type == 'dev' %}
+              <li class="nav-item me-5">
+                  <a class="nav-link" href="{% url 'create-new' %}">Create New Game</a>
+              </li>
+              <li class="nav-item me-3">
+                  <a class="nav-link" href="{% url 'manage-games' %}">Manage My Games</a>
+              </li>
+              {% endif %}
+              <li class="nav-item dropdown me-5">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">My Account</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</a>
+                  {% if user.is_authenticated %}
+                      <a class="dropdown-item" href="#" onclick="document.getElementById('logout-form').submit();">Log Out</a>
+                  {% else %}
+                      <a class="dropdown-item" href="{% url 'login' %}">Log In</a>
+                  {% endif %}
+                  <form id="logout-form" method="POST" action="{% url 'logout' %}">
+                      {% csrf_token %}
+                  </form>
+                </div>
+              </li>
+            </ul>
+            {% if user.is_authenticated %}
+                <div class="d-flex">
+                    <span>Welcome on board, {{ user.username }}!</span>
+                </div>
+            {% else %}
+                <div class="d-flex">
+                    <span></span>
+                </div>
+            {% endif %}
+          <div class="d-flex">
+            <span></span>   
+        </div>
+          </div>
+        </div>
+      </nav>
+        <div class="container mt-4">
+          <form class="d-flex">
+            <input class="form-control me-sm-2" type="search" placeholder="Search">
+            <!-- <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button> -->
+          </form>
+        </div>
+
+
+<div class="container mt-4">
+    {% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Recommended For You</h1>
+            <p></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card border-primary mb-3">
+                <h3 class="card-header">Card header</h3>
+                <div class="card-body">
+                  <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+                  <rect width="100%" height="100%" fill="#868e96"></rect>
+                  <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
+                </svg>
+                <div class="card-body">
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-primary mb-3">
+                <h3 class="card-header">Card header</h3>
+                <div class="card-body">
+                  <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+                  <rect width="100%" height="100%" fill="#868e96"></rect>
+                  <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
+                </svg>
+                <div class="card-body">
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-primary mb-3">
+                <h3 class="card-header">Card header</h3>
+                <div class="card-body">
+                  <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+                  <rect width="100%" height="100%" fill="#868e96"></rect>
+                  <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
+                </svg>
+                <div class="card-body">
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-primary mb-3">
+                <h3 class="card-header">Card header</h3>
+                <div class="card-body">
+                  <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+                  <rect width="100%" height="100%" fill="#868e96"></rect>
+                  <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
+                </svg>
+                <div class="card-body">
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-primary mb-3">
+                <h3 class="card-header">Card header</h3>
+                <div class="card-body">
+                  <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+                  <rect width="100%" height="100%" fill="#868e96"></rect>
+                  <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
+                </svg>
+                <div class="card-body">
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-primary mb-3">
+                <h3 class="card-header">Card header</h3>
+                <div class="card-body">
+                  <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
+                  <rect width="100%" height="100%" fill="#868e96"></rect>
+                  <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Image cap</text>
+                </svg>
+                <div class="card-body">
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-end">
+        <!-- <a href="{% url 'manage-games' %}" class="btn btn-primary">View All Games</a> -->
+          {% endblock %}
+    </div>
+
+
+    <div class="trend-container mt-4">
+        <h2>Trending Now</h2>
+        <div id="trendingCarousel" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-inner">
+                 <div class="carousel-item active">
+                     <div class="row">
+                        <div class="col">
+                            <div class="card border-secondary mb-3" style="max-width: 20rem;">
+                                <div class="card-header">Header 1</div>
+                                  <div class="card-body">
+                                      <img src="{% static 'images/example.png' %}" class="card-img" alt="Example Image">
+                                   </div>
+                               </div>
+                           </div>
+                        <div class="col">
+                            <div class="card border-secondary mb-3" style="max-width: 20rem;">
+                                <div class="card-header">Header 2</div>
+                                  <div class="card-body">
+                                      <img src="{% static 'images/example.png' %}" class="card-img" alt="Example Image">
+                                  </div>
+                             </div>
+                         </div>
+                        <div class="col">
+                            <div class="card border-secondary mb-3" style="max-width: 20rem;">
+                                <div class="card-header">Header 3</div>
+                                <div class="card-body">
+                                    <img src="{% static 'images/example.png' %}" class="card-img" alt="Example Image">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card border-secondary mb-3" style="max-width: 20rem;">
+                                <div class="card-header">Header 4</div>
+                                <div class="card-body">
+                                    <img src="{% static 'images/example.png' %}" class="card-img" alt="Example Image">
+                                </div>
+                             </div>
+                         </div>
+                      </div>
+                </div>
+
+            
+            <button class="carousel-control-prev" type="button" data-bs-target="#trendingCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#trendingCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for sign up-->
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="signupModalLabel">Choose Your Account Type</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Please select your account type:</p>
+        <div class="d-flex flex-column">
+          <a href="{% url 'signup_developer' %}" class="btn btn-info mb-2">Sign-up as Devs</a>
+          <a href="{% url 'signup_player' %}" class="btn btn-secondary">Sign-up as Players</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- footer -->
+<footer class="bg-dark text-center text-lg-start mt-4">
+    <div class="container p-4">
+        <p class="text-center">&copy; Capstone group 7</p>
+    </div>
+</footer>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

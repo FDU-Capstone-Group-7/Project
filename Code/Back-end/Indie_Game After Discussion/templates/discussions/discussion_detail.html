@@ -1,0 +1,22 @@
+{% extends "game/index.html" %} {% block content %}
+<h2>{{ discussion.title }}</h2>
+<p>{{ discussion.content }}</p>
+<p>Posted by {{ discussion.author }} on {{ discussion.created_at }}</p>
+
+<h3>Comments</h3>
+<ul>
+  {% for comment in comments %}
+  <li>
+    {{ comment.content }} by {{ comment.author }} on {{ comment.created_at }}
+  </li>
+  {% empty %}
+  <li>No comments yet.</li>
+  {% endfor %}
+</ul>
+
+<h3>Add a Comment</h3>
+<form method="POST">
+  {% csrf_token %} {{ comment_form.as_p }}
+  <button type="submit">Submit Comment</button>
+</form>
+{% endblock content %}
