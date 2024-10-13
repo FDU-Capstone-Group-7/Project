@@ -1,0 +1,11 @@
+Add Authentication feature
+
+Comments:
+New userProfile class:Dev account/player account;
+Django authentication service;
+Sign-up page
+Login/Logout page
+Index.html fixing
+
+
+*Goes to Back_End folder
