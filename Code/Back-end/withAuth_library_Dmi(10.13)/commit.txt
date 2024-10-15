@@ -1,0 +1,13 @@
+
+Based on Authentication/Homepage creation build:
+Add Library Feature for dev user
+
+Comments:
+
+Add userLibrary view and userLibrary.html；
+New css for userLibrary page；
+New update page template for the Game update/delete function；
+navbar redirect；
+
+
+*Goes to Back_End folder*
