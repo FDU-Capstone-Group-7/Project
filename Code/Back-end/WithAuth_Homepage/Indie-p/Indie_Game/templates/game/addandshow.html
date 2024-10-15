@@ -34,7 +34,7 @@
                   <a class="nav-link" href="{% url 'create-new' %}">Create New Game</a>
               </li>
               <li class="nav-item me-3">
-                  <a class="nav-link" href="{% url 'home' %}">Manage My Games</a>
+                  <a class="nav-link" href="{% url 'user_library' %}">Manage My Games</a>
               </li>
               {% endif %}
               <li class="nav-item dropdown me-5">
@@ -115,27 +115,61 @@
                     
                             <div class="mb-3">
                                 <label for="{{ form.genre.id_for_label }}" class="form-label">Genre</label>
-                                <select class="form-select" id="{{ form.genre.id_for_label }}" name="{{ form.genre.name }}">
-                                    <option value="">Select genre</option>
-                                    <option value="action">Action</option>
-                                    <option value="adventure">Adventure</option>
-                                    <option value="rpg">RPG</option>
-                                    <option value="puzzle">Puzzle</option>
-                                    <option value="strategy">Strategy</option>
+                                <select class="form-select" id="{{ form.genre.id_for_label }}" onchange="updateGenres()">
+                                    <option value="Action">Action</option>
+                                    <option value="JRPG">JRPG</option>
+                                    <option value="RPG">RPG</option>
+                                    <option value="Puzzle">Puzzle</option>
+                                    <option value="Strategy">Strategy</option>
+                                    <option value="Simulation">Simulation</option>
+                                    <option value="Racing">Racing</option>
+                                    <option value="Sports">Sports</option>
+                                    <option value="Fighting">Fighting</option>
+                                    <option value="Horror">Horror</option>
+                                    <option value="Muilti-Player">Muilti-Player</option>
+                                    <option value="FPS">FPS</option>
                                 </select>
                                 {% for error in form.genre.errors %}
                                     <div class="text-danger">{{ error }}</div>
                                 {% endfor %}
                             </div>
+
+                            <div class="mb-3">
+                                <label for="selected-genres" class="form-label">Selected Genres</label>
+                                <input type="text" id="selected-genres" class="form-control" name="{{ form.genre.name }}" readonly>
+                            </div>
+
+
+
+                            <script>
+                                const selectedGenres = [];
+                            
+                                function updateGenres() {
+                                    const genreSelect = document.getElementById('{{ form.genre.id_for_label }}');
+                                    const selectedValue = genreSelect.value;
+                        
+                                    if (selectedValue && !selectedGenres.includes(selectedValue)) {
+                                        selectedGenres.push(selectedValue);
+                                    }
+                        
+                                    document.getElementById('selected-genres').value = selectedGenres.join(', ');
+                        
+                                }
+                            </script>
+
+
                     
                             <div class="mb-3">
                                 <label for="{{ form.stage.id_for_label }}" class="form-label">Stage</label>
                                 <select class="form-select" id="{{ form.stage.id_for_label }}" name="{{ form.stage.name }}">
                                     <option value="">Select development stage</option>
-                                    <option value="concept">Concept</option>
-                                    <option value="development">In Development</option>
-                                    <option value="beta">Beta</option>
-                                    <option value="released">Released</option>
+                                    <option value="CONCEPT">Concept</option>
+                                    <option value="PRE-PRODUCTION">Pre-production</option>
+                                    <option value="DEVELOPMENT">In Development</option>
+                                    <option value="ALPHA">Alpha</option>
+                                    <option value="BETA">Beta</option>
+                                    <option value="RELEASED">Released</option>
+                                    <option value="POST-RELEASE">Post-release</option>
                                 </select>
                                 {% for error in form.stage.errors %}
                                     <div class="text-danger">{{ error }}</div>
@@ -159,8 +193,8 @@
                             </div>
                     
                             <div class="mb-3">
-                                <label for="{{ form.pictures.id_for_label }}" class="form-label">Pictures</label>
-                                <input class="form-control" type="file" id="{{ form.pictures.id_for_label }}" name="{{ form.pictures.name }}">
+                                <label for="pictures" class="form-label">Pictures</label>
+                                <input class="form-control" type="file" id="pictures" name="pictures" multiple>
                                 {% for error in form.pictures.errors %}
                                     <div class="text-danger">{{ error }}</div>
                                 {% endfor %}
@@ -185,6 +219,18 @@
         </div>
     </div>
 
+       
+    <footer class="bg-dark text-center text-lg-start mt-4">
+        <div class="container p-4">
+            <p class="text-center">&copy; Capstone group 7</p>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
    
 </body>
 </html>

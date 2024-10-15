@@ -8,7 +8,7 @@ from .model.userprofile import UserProfile
 class GameForm(forms.ModelForm):
     class Meta:
         model = Game
-        fields = ['title', 'publisher', 'genre', 'stage', 'cover_image', 'video_link', 'pictures', 'description']
+        fields = ['title', 'publisher', 'genre', 'stage', 'cover_image', 'video_link', 'description']
 
 
 class CustomUserCreationForm(UserCreationForm):

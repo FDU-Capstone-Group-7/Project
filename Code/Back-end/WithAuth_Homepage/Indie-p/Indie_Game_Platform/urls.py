@@ -22,7 +22,7 @@ from django.conf import settings
 from Indie_Game.view.userRegistration import signup_developer, signup_player
 from django.contrib.auth import views as auth_views
 from Indie_Game.view.gameHomepage import game_homepage
-
+from Indie_Game.view.userLibrary import user_library
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,7 +37,7 @@ urlpatterns = [
     path('delete-game/<int:id>/', gameView.delete_data, name='delete_data'),
     path('<int:id>/',gameView.update_data, name="updatedata"),
     path('game/<slug:slug>/', game_homepage, name='game_homepage'),
-   
+    path('library/', user_library, name='user_library'),
 
 ]
 
