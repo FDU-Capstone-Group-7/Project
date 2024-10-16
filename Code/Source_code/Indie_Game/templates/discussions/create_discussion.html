@@ -1,0 +1,31 @@
+{% extends "game/index.html" %} {% block content %}
+<div class="container mt-5">
+  <h1>Create New Discussion for {{ game.title }}</h1>
+
+  <!-- Display form errors -->
+  {% if form.errors %}
+  <div class="alert alert-danger">
+    <ul>
+      {% for field, errors in form.errors.items %}
+      <li>{{ field.label }}: {{ errors|join:", " }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <!-- Discussion Form -->
+  <form method="POST" class="mt-4">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="id_title" class="form-label">Title:</label>
+      {{ form.title }}
+    </div>
+    <div class="mb-3">
+      <label for="id_content" class="form-label">Content:</label>
+      {{ form.content }}
+    </div>
+    <input type="hidden" name="game" value="{{ game.id }}" />
+    <button type="submit" class="btn btn-primary">Create Discussion</button>
+  </form>
+</div>
+{% endblock content %}
