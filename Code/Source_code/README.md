@@ -21,7 +21,7 @@ Delete file: Indie_Game/migrations/0001_initial.py
 CLI : python3 manage.py makemigrations Indie_Game
 CLI : python3 manage.py migrate
 (Optional) CLI : python3 manage.py createsuperuser (set your User_Name and Password)
-CLI : python3 manage.py runserver
+CLI : python3 python3 manage.py runserver_with_task
 Open a browser and go to: http://127.0.0.1:8000/admin
 
 P.S. If terminal tells you that Port is already occupied. Kill the process running in this port by executing:
@@ -29,13 +29,21 @@ P.S. If terminal tells you that Port is already occupied. Kill the process runni
 lsof -i :8000 ##### to find the process ID
 kill -9 'PID' ##### 'PID' is the second column in the row
 
+####################################
+
 If migration does not go well:
-Delete all tables from DB and delete history:
+Delete all tables from DB 
+DROP TABLE 'table name';
+
+and delete DB history:
 DELETE FROM django_migrations WHERE app = 'Indie_Game';
+
 Then create makesmigrations and migrate
 
 
 ###########################################
+
+Patch Note # 21.10.2024
 
 1. Install: pip install gpt4all
 2. Added LLM - folder with files inside
@@ -43,14 +51,14 @@ Then create makesmigrations and migrate
         class Meta:
         db_table = 'Indie_Game_comment'
 4. Added
-    class Comment_carantine(models.Model):
-    discussion = models.ForeignKey(Discussion, on_delete=models.CASCADE, related_name='comments')
+    class Comment_temp(models.Model):
+    discussion = models.ForeignKey(Discussion, on_delete=models.CASCADE, related_name='comments_temp')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
     created_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
-        db_table = 'Indie_Game_comment_carantine'
+        db_table = 'Indie_Game_comment_temp'
 5. Added LLM_moderation.py
 6. Changed forms.py:  
     from .model.Discussion import Discussion, Comment_carantine
@@ -58,8 +66,10 @@ Then create makesmigrations and migrate
 7. New folder - "management"
 8. New command to run server: python3 manage.py runserver_with_task
 9. Updated 
-    class Comment_carantine(models.Model):
+    class Comment_temp(models.Model):
         discussion = models.ForeignKey(
             Discussion,
             on_delete=models.CASCADE,
-            related_name='carantine_comments'
+            related_name='temp_comments'
+
+######################################

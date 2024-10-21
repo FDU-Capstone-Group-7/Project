@@ -21,5 +21,17 @@ class Comment(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(default=timezone.now)
 
+    class Meta:
+        db_table = 'Indie_Game_comment'
+        
     def __str__(self):
         return f'Comment by {self.author} on {self.discussion}'
+
+class Comment_temp(models.Model):
+    discussion = models.ForeignKey(Discussion, on_delete=models.CASCADE, related_name='temp_comments')
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_at = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        db_table = 'Indie_Game_comment_temp'

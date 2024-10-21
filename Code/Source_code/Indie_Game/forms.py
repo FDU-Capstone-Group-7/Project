@@ -4,7 +4,7 @@ from .model.game import Game
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .model.userprofile import UserProfile
-from .model.Discussion import Discussion, Comment
+from .model.Discussion import Discussion, Comment_temp
 
 class GameForm(forms.ModelForm):
     class Meta:
@@ -34,6 +34,6 @@ class DiscussionForm(forms.ModelForm):
 
 class CommentForm(forms.ModelForm):
     class Meta:
-        model = Comment
+        model = Comment_temp
         fields = ['content']
 
