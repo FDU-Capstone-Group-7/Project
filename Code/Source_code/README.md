@@ -28,4 +28,38 @@ P.S. If terminal tells you that Port is already occupied. Kill the process runni
 
 lsof -i :8000 ##### to find the process ID
 kill -9 'PID' ##### 'PID' is the second column in the row
+
+If migration does not go well:
+Delete all tables from DB and delete history:
+DELETE FROM django_migrations WHERE app = 'Indie_Game';
+Then create makesmigrations and migrate
+
+
 ###########################################
+
+1. Install: pip install gpt4all
+2. Added LLM - folder with files inside
+3. Added in Discussion.py 
+        class Meta:
+        db_table = 'Indie_Game_comment'
+4. Added
+    class Comment_carantine(models.Model):
+    discussion = models.ForeignKey(Discussion, on_delete=models.CASCADE, related_name='comments')
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_at = models.DateTimeField(default=timezone.now)
+
+    class Meta:
+        db_table = 'Indie_Game_comment_carantine'
+5. Added LLM_moderation.py
+6. Changed forms.py:  
+    from .model.Discussion import Discussion, Comment_carantine
+    model = Comment_carantine
+7. New folder - "management"
+8. New command to run server: python3 manage.py runserver_with_task
+9. Updated 
+    class Comment_carantine(models.Model):
+        discussion = models.ForeignKey(
+            Discussion,
+            on_delete=models.CASCADE,
+            related_name='carantine_comments'
