@@ -40,6 +40,15 @@ DELETE FROM django_migrations WHERE app = 'Indie_Game';
 
 Then create makesmigrations and migrate
 
+###########################################
+
+Git Commands:
+
+git status # check status and look through files for commit
+git add (file name) # select files for commit / git restore (file name) # unselect
+git commit -m "comments" # prepare package for sending to GitHub
+git push origin main # send to GitHub
+git pull origin main # get an update from GitHub
 
 ###########################################
 
