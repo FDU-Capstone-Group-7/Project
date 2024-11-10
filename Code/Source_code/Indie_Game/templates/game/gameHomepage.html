@@ -118,10 +118,10 @@
                                 <input type="radio" class="btn-check" name="btnradio" id="arts-tab" autocomplete="off" checked="">
                                 <label class="btn btn-outline-primary" for="arts-tab" data-bs-toggle="tab" data-bs-target="#arts" type="button" role="tab" aria-controls="arts" aria-selected="false">Arts</label> 
                             </li>
-                            <li class="nav-item" role="presentation">
+                            <!-- <li class="nav-item" role="presentation">
                                 <input type="radio" class="btn-check" name="btnradio" id="arts-tab" autocomplete="off" checked="">
                                  <a href="{% url 'game_discussions' game.id %}" class="btn btn-outline-primary" id="arts-tab" role="tab" aria-controls="arts" aria-selected="false">Discussion</a>
-                            </li>
+                            </li> -->
                             </li>
                         </ul>
                         
@@ -202,62 +202,64 @@
             <section class="updates-area">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h1>Updates</h1>
-                    <button type="submit" class="btn btn-primary">+ Add New</button>
-
+                    <a href="{% url 'update_create' slug=homepage.slug %}" class="btn btn-primary">+ Add New</a>
                 </div>
                 <div class="accordion" id="accordionExample">
+                    {% for update in updates %}
                         <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                            Accordion Item #1
+                        <h2 class="accordion-header" id="heading{{ forloop.counter }}">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="false" aria-controls="collapse{{ forloop.counter }}">
+                                {{ update.update_title }}
                             </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" >
+                        <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" >
                             <div class="accordion-body">
                                 <div class="d-flex justify-content-between align-items-center mb-5">
-                                    <button type="submit" class="btn btn-secondary">Edit</button>
-                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                    <a href="{% url 'update_edit' slug=homepage.slug update_id=update.id %}" class="btn btn-secondary">Edit</a>
+                                    <form action="{% url 'update_delete' slug=homepage.slug update_id=update.id %}" method="post" style="display:inline;">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
                                 </div>
 
                                 <div class="mb-5">
-                                    <h1>Update Date:</h1> <span id="update-date">2024-09-27</span>
+                                    <h1>Update Date:</h1> <span id="update-date">{{ update.update_date }}</span>
                                 </div>
                                 <div class="mb-5">
                                     <h1>Patch Notes:</h1>
                                     <div class="patch-notes"> 
-                                        <p id="patch-notes">
-                                            
-在一个阳光明媚的早晨，城市的街道逐渐被人流填满，商店的橱窗反射出耀眼的光芒。空气中弥漫着新鲜的咖啡香，伴随着烘焙面包的诱人气息，使得路过的行人不禁停下脚步，流连忘返。小孩们在公园里嬉戏，欢声笑语充满了整个空间，仿佛把周围的喧嚣都抛在了脑后。老人在长椅上静静地看着这一切，脸上挂着满足的微笑，仿佛在回忆自己年轻时的快乐时光。远处，咖啡馆的门口坐着几位年轻的艺术家，他们聚精会神地在素描本上描绘着眼前的景象，每一笔都充满了对生活的热爱。时光仿佛在此刻凝固，每一个细节都变得格外珍贵。这样的日子，让人不由得想要珍惜生活中的每一个瞬间，无论是平凡的日常，还是难得的相聚，都是构成生命的美好画卷。生活的点滴如同调色板上的颜色，虽各自独立，却共同绘制出了一幅丰富多彩的画面。人们在这里交织，形成了一个个温暖的故事，这些故事如同涓涓细流，汇聚成了城市的灵魂。
-
+                                        <p id="patch-notes">                                           
+                                            {{ update.patch_notes }}
                                         </p>
 
                                     </div>
                                 </div>
                                 <div class=" mb-5">
                                     <h1><strong>Download playable build:</strong></h1>
-                                    <a href="download-link.zip" class="btn btn-lg btn-primary mt-3">Download</a> 
+                                    <a href="{{ update.downloadable }}" class="btn btn-lg btn-primary mt-3">Download</a> 
                                     
                                 </div>
                                 <div class="mb-5">
                                     <h1><strong>Video</strong></h1>
                                     <div class="ratio ratio-16x9">
-                                        <iframe src="https://www.youtube.com/embed/example-video" title="Video" allowfullscreen></iframe>
+                                        <iframe width="560" height="315" src="{{update.video}}" title="Video" allowfullscreen></iframe>
                                     </div>
                                 </div>
+
                                 <div class="mb-5">
                                     <h1><strong>Screenshots/Arts</strong></h1>
 
                                     <div class="d-flex flex-wrap justify-content-center mt-5">
-                                        <div class="img-container mb-2"> 
-                                            <img src="assets/images/example.png" class="img-fluid" alt="Example Image 1">
-                                            <div class="img-caption">figue1...</div> 
-                                        </div>
-                                        <div class="img-container mb-2"> 
-                                            <img src="assets/images/banner.jpg" class="img-fluid" alt="Example Image 2">
-                                            <div class="img-caption">figure2...</div> 
-                                        </div>
+                                        {% for picture in update.update_pictures.all %}
+                                            <div class="img-container"> 
 
-                                    </div>
+                                                <img src="{{ picture.image.url }}" class="img-fluid" alt="screenshots">
+                                                <div class="img-caption">{{ picture.image_caption }}</div> 
+                                
+                                                </div>
+                                        {% endfor %}
+                                           
+                                        </div>
                                 </div>
 
 
@@ -274,7 +276,7 @@
                                     <button id="submit-rating btn-primary" disabled>Submit</button>
 
                                     
-                                    <section class="update-feedback mt-5">
+                                    <!-- <section class="update-feedback mt-5">
                                         <form>
                                             <h2>Feedback</h2>
                                             <p>Please let us know what you think about this update.</p>
@@ -285,39 +287,24 @@
                                                 </div>
                                                 <button type="submit" class="btn btn-primary">Submit Feedback</button>
                                         </form>
-                                    </section>
+                                    </section> -->
                                 </div>
                                 
                             </div>
                         </div>
                     </div>
+                {% endfor %}
 
-                    <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Accordion Item #2
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample" >
-                        <div class="accordion-body">
-                        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                    </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                        Accordion Item #3
-                        </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample" >
-                        <div class="accordion-body">
-                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                    </div>
-                    </div>
                 </div>
+            </section>
+
+            <section class="discussion-board" >
+                <h1>
+                    <a href="{% url 'game_discussions' game.id %}" style="text-decoration: none;">
+                    Join Discussion →
+                </a>
+                </h1>
+
             </section>
 
      </div>

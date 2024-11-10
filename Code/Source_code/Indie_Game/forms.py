@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .model.userprofile import UserProfile
 from .model.Discussion import Discussion, Comment_temp
+from .model.update import Update
 
 class GameForm(forms.ModelForm):
     class Meta:
@@ -37,3 +38,7 @@ class CommentForm(forms.ModelForm):
         model = Comment_temp
         fields = ['content']
 
+class UpdateForm(forms.ModelForm):
+    class Meta:
+        model = Update
+        fields = ['update_title','update_date', 'patch_notes', 'downloadable', 'video']

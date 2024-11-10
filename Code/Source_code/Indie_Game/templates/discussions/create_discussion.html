@@ -1,31 +1,142 @@
-{% extends "game/index.html" %} {% block content %}
-<div class="container mt-5">
-  <h1>Create New Discussion for {{ game.title }}</h1>
 
-  <!-- Display form errors -->
-  {% if form.errors %}
-  <div class="alert alert-danger">
-    <ul>
-      {% for field, errors in form.errors.items %}
-      <li>{{ field.label }}: {{ errors|join:", " }}</li>
-      {% endfor %}
-    </ul>
-  </div>
-  {% endif %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Update</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static 'Indie_Game/css/mainpage.css' %}" rel="stylesheet">
+    <link href="{% static 'Indie_Game/css/theme.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="banner">
+        <img src="{% static 'Indie_Game/images/banner.jpg' %}" class="img-fluid w-100" alt="Banner Image">
+    </div>
 
-  <!-- Discussion Form -->
-  <form method="POST" class="mt-4">
-    {% csrf_token %}
-    <div class="mb-3">
-      <label for="id_title" class="form-label">Title:</label>
-      {{ form.title }}
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'home' %}">PixelPals</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item me-5">
+                  <span class="visually-hidden">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item me-5">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+              </li>
+              {% if user.is_authenticated and user.userprofile.account_type == 'dev' %}
+              <li class="nav-item me-5">
+                  <a class="nav-link" href="{% url 'create-new' %}">Create New Game</a>
+              </li>
+              <li class="nav-item me-3">
+                  <a class="nav-link" href="{% url 'user_library' %}">Manage My Games</a>
+              </li>
+              {% endif %}
+              <li class="nav-item dropdown me-5">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">My Account</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#signupModal">Sign Up</a>
+                  {% if user.is_authenticated %}
+                      <a class="dropdown-item" href="#" onclick="document.getElementById('logout-form').submit();">Log Out</a>
+                  {% else %}
+                      <a class="dropdown-item" href="{% url 'login' %}">Log In</a>
+                  {% endif %}
+                  <form id="logout-form" method="POST" action="{% url 'logout' %}">
+                      {% csrf_token %}
+                  </form>
+                </div>
+              </li>
+            </ul>
+            {% if user.is_authenticated %}
+                <div class="d-flex">
+                    <span>Welcome on board, {{ user.username }}!</span>
+                </div>
+            {% else %}
+                <div class="d-flex">
+                    <span></span>
+                </div>
+            {% endif %}
+          <div class="d-flex">
+            <span></span>   
+        </div>
+          </div>
+        </div>
+      </nav>
+
+    <div class="custom-container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+              <div class="comment-form">
+                <div class="card border-primary mb-3">
+                    <h3 class="card-header"> Create New Discussion for {{ game.title }}</h3>
+                    <div class="card-body">
+                                
+                              <!-- Display form errors -->
+                              <!-- {% if form.errors %}
+                              <div class="alert alert-danger">
+                                <ul>
+                                  {% for field, errors in form.errors.items %}
+                                  <li>{{ field.label }}: {{ errors|join:", " }}</li>
+                                  {% endfor %}
+                                </ul>
+                              </div>
+                              {% endif %} -->
+
+                              <form method="POST" class="mt-4">
+                                {% csrf_token %}
+                                
+                                <div class="mb-3">
+                                    <label for="{{ form.title.id_for_label }}" class="form-label">Title:</label>
+                                    <input type="text" class="form-control" id="{{ form.title.id_for_label }}" name="{{ form.title.name }}" value="{{ form.title.value|default:'' }}">
+                                    {% for error in form.title.errors %}
+                                        <div class="text-danger">{{ error }}</div>
+                                    {% endfor %}
+                                </div>
+                            
+                                <div class="mb-3">
+                                    <label for="{{ form.content.id_for_label }}" class="form-label">Content:</label>
+                                    <textarea class="form-control" id="{{ form.content.id_for_label }}" name="{{ form.content.name }}" rows="5">{{ form.content.value|default:'' }}</textarea>
+                                    {% for error in form.content.errors %}
+                                        <div class="text-danger">{{ error }}</div>
+                                    {% endfor %}
+                                </div>
+                            
+                                <input type="hidden" name="game" value="{{ game.id }}" />
+                                <button type="submit" class="btn btn-primary">Create Discussion</button>
+                            </form>
+                            
+    
+                        
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
     </div>
-    <div class="mb-3">
-      <label for="id_content" class="form-label">Content:</label>
-      {{ form.content }}
-    </div>
-    <input type="hidden" name="game" value="{{ game.id }}" />
-    <button type="submit" class="btn btn-primary">Create Discussion</button>
-  </form>
-</div>
-{% endblock content %}
+
+    <footer class="bg-dark text-center text-lg-start mt-4">
+        <div class="container p-4">
+            <p class="text-center">&copy; Capstone group 7</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+

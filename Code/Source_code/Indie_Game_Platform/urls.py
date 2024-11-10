@@ -1,4 +1,3 @@
-
 from django.contrib import admin
 from django.urls import path
 from Indie_Game.view import gameView
@@ -11,6 +10,7 @@ from Indie_Game.view.gameHomepage import game_homepage
 from Indie_Game.view.userLibrary import user_library
 from django.urls import path
 from Indie_Game.view import discussionView
+from Indie_Game.view import updateView
 
 
 
@@ -37,6 +37,13 @@ urlpatterns = [
     path('games/<int:game_id>/discussions/create/', discussionView.create_discussion, name='create_discussion'),
     path('discussions/<int:discussion_id>/', discussionView.discussion_detail, name='discussion_detail'),
     path('discussions/<int:discussion_id>/delete/', discussionView.delete_discussion, name='delete_discussion'),
+
+    
+   #update url
+
+    path('game/<slug:slug>/updates/create/', updateView.add_show_update, name='update_create'),
+    path('game/<slug:slug>/updates/<int:update_id>/edit/', updateView.update_update, name='update_edit'),
+    path('game/<slug:slug>/updates/<int:update_id>/delete/', updateView.delete_update, name='update_delete'),
 
 ]
 

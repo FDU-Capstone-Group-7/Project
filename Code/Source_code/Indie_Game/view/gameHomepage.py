@@ -3,7 +3,9 @@ from ..model.homepage import Homepage
 
 def game_homepage(request, slug):
     homepage = get_object_or_404(Homepage, slug=slug) 
-    genres = homepage.game.genre.split(', ') if homepage.game.genre else [] 
+    genres = homepage.game.genre.split(', ') if homepage.game.genre else []
+    updates = homepage.updates.all().order_by('-update_date') 
+  
 
     stage_values = {
         'CONCEPT': 10,
@@ -30,4 +32,4 @@ def game_homepage(request, slug):
     bar_color = bg_values.get(stage,'bg-primary')
 
 
-    return render(request, 'game/gameHomepage.html', {'game': homepage.game, 'homepage': homepage,'genres': genres,'progress_value': progress_value,'bar_color':bar_color})
+    return render(request, 'game/gameHomepage.html', {'game': homepage.game, 'homepage': homepage,'genres': genres,'progress_value': progress_value,'bar_color':bar_color, 'updates': updates})

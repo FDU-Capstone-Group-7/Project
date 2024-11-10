@@ -146,21 +146,27 @@
 }
 
 .accordion-body .img-container {
-    position: relative;
-    width: 100%;
-    max-width: 800px; 
+    width: 1256px;
+    height: 720px;
+    padding: 20px;
+    margin-bottom: 50px;
 }
 
 .accordion-body .img-fluid {
-    aspect-ratio: 16/9;
+    width: 100%; 
+    height: 100%;
+    object-fit: contain;
+    max-height: 100%; 
+    max-width: 100%; 
 }
 
 .accordion-body .img-caption {
-    position: absolute;
+
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
     color: white;
     width: 100%;
+    height: 50px;
     padding: 5px;
 }
 
@@ -222,7 +228,10 @@
 
 
 
-
+.no-decoration {
+    text-decoration: none; 
+    color: inherit; 
+}
 
 .forum .comment-form .card{
     border-radius: 15px;
