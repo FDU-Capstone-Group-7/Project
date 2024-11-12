@@ -11,7 +11,9 @@ from Indie_Game.view.userLibrary import user_library
 from django.urls import path
 from Indie_Game.view import discussionView
 from Indie_Game.view import updateView
-
+from django.urls import path
+from Indie_Game.view.reportView import discussion_report_view
+from Indie_Game.view.sendEmailView import send_email
 
 
 urlpatterns = [
@@ -45,6 +47,9 @@ urlpatterns = [
     path('game/<slug:slug>/updates/<int:update_id>/edit/', updateView.update_update, name='update_edit'),
     path('game/<slug:slug>/updates/<int:update_id>/delete/', updateView.delete_update, name='update_delete'),
 
+    #report generation url
+     path('discussions/<int:discussion_id>/report/',discussion_report_view, name='discussion_report'),
+     path('discussions/<int:discussion_id>/report-send/', send_email, name='send_email'),
 ]
 
 if settings.DEBUG:

@@ -72,15 +72,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Indie_Game_Platform.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
 
 DATABASES = {
     'default': {
@@ -143,3 +134,15 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
 
 LOGIN_REDIRECT_URL = '/' 
+
+# settings.py
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+EMAIL_HOST_USER = 'kjiods@gmail.com'  # Your email address
+EMAIL_HOST_PASSWORD = 'qyhs lstz hiir iiwj'  # App password if using Gmail
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

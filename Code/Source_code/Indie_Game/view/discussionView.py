@@ -48,3 +48,5 @@ def delete_discussion(request, discussion_id):
     if discussion.author == request.user:
         discussion.delete()
     return redirect('discussions/game_discussions', game_id=discussion.game.id)
+
+

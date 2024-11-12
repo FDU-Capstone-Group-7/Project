@@ -42,3 +42,6 @@ class UpdateForm(forms.ModelForm):
     class Meta:
         model = Update
         fields = ['update_title','update_date', 'patch_notes', 'downloadable', 'video']
+
+class EmailForm(forms.Form):
+    email = forms.EmailField(label="Your Email", required=True)
