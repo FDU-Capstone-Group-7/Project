@@ -11,16 +11,19 @@
     width: 100px; 
     height: 100px; 
     border-radius: 50%; 
-    overflow: hidden; 
     margin-bottom: 20px; 
     box-shadow: 
-    0 0 0 3px rgb(255, 152, 202), 
+    0 0 0 3px rgb(178, 63, 255), 
     0 4px 15px rgba(255, 104, 235, 0.4);
+    overflow: hidden;
 }
 
 .user-icon img {
-    width: 100%; 
-    height: auto; 
+
+    object-fit: cover; /* 讓圖片覆蓋父容器，保持比例 */
+    width: 100%; /* 讓圖片填滿容器的寬度 */
+    height: 100%; /* 讓圖片填滿容器的高度 */
+
 }
 
 .library-container {
@@ -84,9 +87,7 @@
     border-radius: 10px;
 }
 
-
-.button-group{
-    flex: 1;  
+.button-group{ 
     display: flex;           
     justify-content: space-between;;     
     align-items: center; 
@@ -110,9 +111,10 @@
 
 .btn-delete{
     flex:1;
+    min-height: 65px;
     background-color: #a52f1a; 
-
 }
+
 
 
 

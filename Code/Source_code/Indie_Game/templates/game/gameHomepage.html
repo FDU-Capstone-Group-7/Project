@@ -17,6 +17,7 @@
 </html> -->
 
 {% load static %}
+{% load custom_filters %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +27,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="{% static 'Indie_Game/css/homepage.css' %}" rel="stylesheet">
     <link href="{% static 'Indie_Game/css/theme.css' %}" rel="stylesheet">
+    <script src="{% static 'Indie_Game/js/rating.js' %}"></script>
 
 </head>
 <body>
@@ -98,9 +100,12 @@
                         <div class="card border-light">
                             <div class="card-body">
                                 <img src="{{ homepage.game.cover_image.url }}" class="card-img" alt="Example Image">
+                                
                             </div>
                         </div>
                     </div>
+                    <span class="game-avr-rating">{{ game.game_rating }}</span>
+                    <span class="star" style="color: gold;font-size: 50px;">&#9733;</span>
                 </div>
             
                 <div class="col-md-8">
@@ -202,7 +207,9 @@
             <section class="updates-area">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h1>Updates</h1>
+                    {% if user.is_authenticated and is_game_owner %}
                     <a href="{% url 'update_create' slug=homepage.slug %}" class="btn btn-primary">+ Add New</a>
+                    {% endif %}
                 </div>
                 <div class="accordion" id="accordionExample">
                     {% for update in updates %}
@@ -214,13 +221,16 @@
                         </h2>
                         <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" >
                             <div class="accordion-body">
+                                {% if user.is_authenticated and is_game_owner %}
                                 <div class="d-flex justify-content-between align-items-center mb-5">
                                     <a href="{% url 'update_edit' slug=homepage.slug update_id=update.id %}" class="btn btn-secondary">Edit</a>
-                                    <form action="{% url 'update_delete' slug=homepage.slug update_id=update.id %}" method="post" style="display:inline;">
+                                    <form action="{% url 'update_delete' slug=homepage.slug update_id=update.id %}" method="post" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this update?');">
                                         {% csrf_token %}
                                         <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
                                 </div>
+                                {% endif %}
+
 
                                 <div class="mb-5">
                                     <h1>Update Date:</h1> <span id="update-date">{{ update.update_date }}</span>
@@ -254,60 +264,82 @@
                                             <div class="img-container"> 
 
                                                 <img src="{{ picture.image.url }}" class="img-fluid" alt="screenshots">
-                                                <div class="img-caption">{{ picture.image_caption }}</div> 
+                                                <!-- <div class="img-caption">{{ picture.image_caption }}</div>  -->
                                 
                                                 </div>
                                         {% endfor %}
                                            
                                         </div>
                                 </div>
+                            
+                                           
 
-
-                                <div class="rating-area mb-5">
-                                    <h1><strong>Rating</strong></h1>
-                                    <div class="rating" id="rating">
-                                        <span class="star" data-value="1">&#9733;</span>
-                                        <span class="star" data-value="2">&#9733;</span>
-                                        <span class="star" data-value="3">&#9733;</span>
-                                        <span class="star" data-value="4">&#9733;</span>
-                                        <span class="star" data-value="5">&#9733;</span>
+                                    <div class="update-score-area mb-5">
+                                        <h1><strong>Current Score:</strong></h1>
+                                        <div class="update-score-row">
+                                            <span class="update-score" style="font-size: 50px;"><strong>{{ update.average_rating }}</strong></span>
+                                            <span class="star" style="color: gold;font-size: 50px;">&#9733;</span>
+                                        </div>
                                     </div>
-                                    <div id="rating-output">Rating: 0</div>
-                                    <button id="submit-rating btn-primary" disabled>Submit</button>
+
+
+                                    {% if user.is_authenticated and user.userprofile.account_type == 'player' %}
+                                    <div class="rating-area mb-5" id="rating-area">
+                                        <h1 style="font-size: 50px;"><strong>Rating</strong></h1>
+                                        <div class="rating" id="rating">
+                                            <span class="star" data-value="1">&#9733;</span>
+                                            <span class="star" data-value="2">&#9733;</span>
+                                            <span class="star" data-value="3">&#9733;</span>
+                                            <span class="star" data-value="4">&#9733;</span>
+                                            <span class="star" data-value="5">&#9733;</span>
+                                        </div>
+                                        <div id="rating-output" style="font-size: 30px;">Score: 0</div>
+
+
+                                        <form id="rating-form" method="POST" action="{% url 'submit_rating' slug=homepage.slug update_id=update.id %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" id="rating-score" name="score" value="0">
+                                            {% if has_rated|get_item:update.id %}
+                                            <button id="submit-rating" class="btn btn-primary" type="submit" disabled>Submit</button>
+                                            {% else %}
+                                            <button id="submit-rating" class="btn btn-primary" type="submit">Submit</button>
+                                            {% endif %}
+                                        </form>
+                                    </div>
+                                    {% else %}
+                                    <p></p>
+                                    {% endif %}
+
+
+
 
                                     
-                                    <!-- <section class="update-feedback mt-5">
-                                        <form>
-                                            <h2>Feedback</h2>
-                                            <p>Please let us know what you think about this update.</p>
-                                        
-                                                <div class="mb-3">
-                                                    <label for="feedback-content" class="form-label">Feedback</label>
-                                                    <textarea class="form-control" id="feedback-content" name="feedback" rows="5" placeholder="Your Feedback"></textarea>
-                                                </div>
-                                                <button type="submit" class="btn btn-primary">Submit Feedback</button>
-                                        </form>
-                                    </section> -->
-                                </div>
-                                
-                            </div>
+
+
+    
+        
+                            </div>                                                          
                         </div>
                     </div>
                 {% endfor %}
 
                 </div>
             </section>
+         
 
-            <section class="discussion-board" >
-                <h1>
-                    <a href="{% url 'game_discussions' game.id %}" style="text-decoration: none;">
-                    Join Discussion →
-                </a>
-                </h1>
+                                <section class="discussion-board" >
+                                    <h1>
+                                        <a href="{% url 'game_discussions' game.id %}" style="text-decoration: none;">
+                                        Join Discussion →
+                                    </a>
+                                    </h1>
 
-            </section>
 
-     </div>
+                                </section>
+
+            </div>
+
+    
        
           
  <!-- footer -->
@@ -320,7 +352,7 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="javascript/rating.js"></script>
+
 
 </body>
 </html>

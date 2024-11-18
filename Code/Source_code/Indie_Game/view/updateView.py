@@ -6,12 +6,15 @@ from ..model.updatePicture import UpdatePicture
 from ..forms import UpdateForm  
 from ..decorators import is_owner
 from ..model.homepage import Homepage
-from django.http import HttpResponseForbidden
+from ..model.game import Game
+
 
 
 @login_required
+@is_owner
 def add_show_update(request,slug):
     homepage = get_object_or_404(Homepage,slug=slug)
+    game = homepage.game
 
     if request.method == 'POST':
         form = UpdateForm(request.POST)
@@ -28,6 +31,7 @@ def add_show_update(request,slug):
 
             new_update = Update(
                 homepage=homepage,
+                game=game,
                 update_date=update_date,
                 patch_notes=patch_notes,
                 downloadable=downloadable,

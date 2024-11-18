@@ -7,10 +7,25 @@ from django.contrib.auth.decorators import login_required
 from ..decorators import is_owner
 from ..model.homepage import Homepage
 from django.urls import reverse
+from django.db.models import Q
 
 
 def homepage(request):
-    return render(request, 'game/index.html')
+    query = request.GET.get('q', '')
+    game_list=Game.objects.all().order_by('-game_rating', 'title')
+
+
+    if query: 
+        game_list = game_list.filter(
+            Q(title__icontains=query) |  # 
+            Q(genre__icontains=query) |  # 
+            Q(publisher__icontains=query)  
+        ).distinct()
+
+    return render(request, 'game/index.html',{'games': game_list,'query': query})
+
+
+
 
 @login_required
 def add_show(request):
@@ -25,6 +40,7 @@ def add_show(request):
             video_link = fm.cleaned_data['video_link']
             pictures = request.FILES.getlist('pictures')
             description = fm.cleaned_data['description']
+            short_intro = fm.cleaned_data['short_intro']
             user_profile = request.user.userprofile
             selected_genres = request.POST.getlist('genre')
             genre = ', '.join(selected_genres)
@@ -38,6 +54,7 @@ def add_show(request):
                 cover_image=cover_image,
                 video_link=video_link,
                 description=description,
+                short_intro=short_intro,
                 owner=user_profile
             )
 
@@ -47,7 +64,6 @@ def add_show(request):
                 Picture.objects.create(game=reg, image=picture)
             
             
-            game_id = reg.id
             
             homepage = Homepage(
                 user=user_profile,
@@ -55,7 +71,7 @@ def add_show(request):
             )
             
             homepage.save()
-            homepage_id = homepage.id
+
 
             return HttpResponseRedirect(f'/game/{homepage.slug}/')
     else:

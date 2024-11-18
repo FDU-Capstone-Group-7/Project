@@ -11,6 +11,7 @@ from Indie_Game.view.userLibrary import user_library
 from django.urls import path
 from Indie_Game.view import discussionView
 from Indie_Game.view import updateView
+from Indie_Game.view import ratingSubmition
 from django.urls import path
 from Indie_Game.view.reportView import discussion_report_view
 from Indie_Game.view.sendEmailView import send_email
@@ -46,6 +47,7 @@ urlpatterns = [
     path('game/<slug:slug>/updates/create/', updateView.add_show_update, name='update_create'),
     path('game/<slug:slug>/updates/<int:update_id>/edit/', updateView.update_update, name='update_edit'),
     path('game/<slug:slug>/updates/<int:update_id>/delete/', updateView.delete_update, name='update_delete'),
+    path('submit_rating/<slug:slug>/<int:update_id>/', ratingSubmition.submit_rating, name='submit_rating'),
 
     #report generation url
      path('discussions/<int:discussion_id>/report/',discussion_report_view, name='discussion_report'),

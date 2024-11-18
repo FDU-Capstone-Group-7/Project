@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
-from ..forms import CustomUserCreationForm\
-
+from ..forms import CustomUserCreationForm
 from ..model.userprofile import UserProfile
 
 def signup_developer(request):
@@ -17,8 +16,6 @@ def signup_developer(request):
     else:
         form = CustomUserCreationForm() 
     return render(request, 'registration/signup_developer.html', {'form': form})
-
-
 
 def signup_player(request):
     if request.method == 'POST':

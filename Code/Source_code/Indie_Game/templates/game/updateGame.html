@@ -191,6 +191,18 @@
                                     <div class="text-danger">{{ error }}</div>
                                 {% endfor %}
                             </div>
+
+                            <div class="mb-3">
+                                <label for="{{ form.short_intro.id_for_label }}" class="form-label">Short Introduction</label>
+                                <textarea 
+                                    class="form-control" 
+                                    id="{{ form.short_intro.id_for_label }}" 
+                                    name="{{ form.short_intro.name }}" 
+                                    rows="3">{{ form.short_intro.value|default:'' }}</textarea>
+                                {% for error in form.short_intro.errors %}
+                                    <div class="text-danger">{{ error }}</div>
+                                {% endfor %}
+                            </div>
                     
                             <div class="d-grid gap-2">
                                 <button class="btn btn-lg btn-primary" type="submit">Update</button>
@@ -213,8 +225,7 @@
     <!-- Bootstrap JavaScript -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>        
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
    
 </body>
 </html>
