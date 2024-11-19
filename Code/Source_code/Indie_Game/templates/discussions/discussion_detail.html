@@ -79,16 +79,64 @@
                           <p style="font-size: 25px; ">{{ discussion.content }}</p>
                           <p >Posted by {{ discussion.author }} on {{ discussion.created_at }}</p>
 
+                          <hr>
+
                           <h3>Comments</h3>
-                          <ul>
-                            {% for comment in comments %}
-                            <li>
-                              {{ comment.content }} by {{ comment.author }} on {{ comment.created_at }}
-                            </li>
-                            {% empty %}
-                            <li>No comments yet.</li>
-                            {% endfor %}
-                          </ul>
+
+                          <!-- Comment List -->
+                          <div class="comment-list">
+                              {% for comment in comments %}
+                              <div class="comment mb-4 d-flex">
+                                  <!-- Author Avatar -->
+                              <div class="avatar-container">
+                                  <div class="user-icon">
+                                      {% if user_profile.avatar %}
+                                          <img src="{{ user_profile.avatar.url }}" alt="userAvatar">
+                                      {% else %}
+                                          <img src="/static/Indie_Game/images/index.png" alt="Default Avatar">
+                                      {% endif %}
+                                  </div>
+                                
+                              </div>
+
+                              <head>
+                                      <style>
+                                          .avatar-container {
+                                              display: flex;
+                                              align-items: center;
+                                              gap: 10px; /* Add spacing between the avatar and username */
+                                          }
+
+                                          .user-icon img {
+                                              width: 50px; /* Set the width of the avatar */
+                                              height: 50px; /* Set the height of the avatar */
+                                              border-radius: 50%; /* Make the avatar circular */
+                                              object-fit: cover; /* Prevent image distortion */
+                                              border: 2px solid #ccc; /* Optional: Add a border around the avatar */
+                                          }
+
+                                          .avatar-container h2 {
+                                              font-size: 1.2rem; /* Style the username */
+                                              margin: 0;
+                                          }
+                                      </style>
+                                  </head>
+                                  
+                                  <!-- Comment Content -->
+                                  <div class="comment-content">
+                                      <p>
+                                          <strong>{{ comment.author.get_full_name|default:comment.author.username }}</strong>
+                                          <span class="text-muted" style="font-size: 0.9em;">{{ comment.created_at|date:"M d, Y, h:i a" }}</span>
+                                      </p>
+                                      <p>{{ comment.content }}</p>
+                                  </div>
+                              </div>
+                              {% empty %}
+                              <p>No comments yet. Be the first to comment!</p>
+                              {% endfor %}
+                          </div>
+
+                          <hr>
 
                           <form method="POST" class="mt-4">
                               {% csrf_token %}
@@ -106,6 +154,41 @@
                               <button type="submit" class="btn btn-primary">Submit Comment</button>
                           </form>
                           
+                          <h3>Generate Report for Comments</h3>
+                            <form method="get" action="{% url 'discussion_report' discussion_id=discussion.id %}">
+                              <label>Select Date(s) for Report Generation:</label>
+                              <table border="1" style="width: 100%; margin: 20px 0;">
+                                  <thead>
+                                      <tr>
+                                          <th>Select</th>
+                                          <th>Date</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      {% for date in comment_dates %}
+                                          <tr>
+                                              <td>
+                                                  <input type="checkbox" name="selected_dates" value="{{ date|date:'Y-m-d' }}"
+                                                  {% if date|stringformat:"Y-m-d" in selected_dates %} checked {% endif %}>
+                                              </td>
+                                              <td>{{ date|date:'F d, Y' }}</td>
+                                          </tr>
+                                      {% empty %}
+                                          <tr>
+                                              <td colspan="2">No available dates</td>
+                                          </tr>
+                                      {% endfor %}
+                                  </tbody>
+                              </table>
+                              <button type="submit" class="btn btn-primary">Generate Report</button>
+                          </form>
+
+<!-- Debugging Submitted Data -->
+{% if selected_dates %}
+    <p>Submitted Dates: {{ selected_dates }}</p>
+{% endif %}
+
+
                     </div>
                 </div>
             </div>

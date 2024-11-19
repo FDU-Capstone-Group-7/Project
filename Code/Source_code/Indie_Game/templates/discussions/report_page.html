@@ -73,33 +73,58 @@
             <div class="col-md-6">
                 <div class="card border-secondary mb-3">
                     <div class="card-header bg-danger">
-                      <h1>Discussion Board for {{ game.title }}</h1>
-                    </div>
-                    <div class="card-body">
-                      <a href="{% url 'create_discussion' game.id %}" style="display: inline-block; margin: 20px; padding: 10px 20px; background-color: #4179a36e;text-decoration: none;border-radius: 5px;font-size: 20px;text-align: center;" >Create New Discussion</a>
                       
 
-                          <ul>
-                            {% for discussion in discussions %}
-                            <li>
-                              <a href="{% url 'discussion_detail' discussion.id %}" style="font-size: 18px;">
-                                {{ discussion.title }} by {{ discussion.author }} - {{ discussion.created_at }}
-                              </a>
-                            </li>
-                            {% empty %}
-                            <li>No discussions yet.</li>
-                            {% endfor %}
-                          </ul>
+                    <h2>Report for Discussion: {{ discussion.title }}</h2>
 
-                          
-                   
+                    <!-- Display Selected Dates -->
+                    {% if selected_dates %}
+                    <p><strong>Selected Date(s):</strong> {{ selected_dates|join:", " }}</p>
+                    {% endif %}
+
+                    <!-- Display the Generated Report -->
+                    {% if report %}
+                    <h3>Generated Report</h3>
+                    <div class="report-content">{{ report }}</div>
+                    {% else %}
+                    <p>No report generated. Please select dates and try again.</p>
+                    {% endif %}
+
+                    <!-- Display Filtered Comments -->
+                    <h3>Filtered Comments</h3>
+                    <ul>
+                    {% for comment in filtered_comments %}
+                    <li>
+                        <strong>{{ comment.author.username }}</strong>: {{ comment.content }}
+                        <br />
+                        <span class="text-muted"
+                        >{{ comment.created_at|date:"M d, Y, h:i a" }}</span
+                        >
+                    </li>
+                    {% empty %}
+                    <li>No comments found for the selected dates.</li>
+                    {% endfor %}
+                    </ul>
+
+
                     </div>
+                    <form method="post" action="{% url 'send_email' discussion.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="report_content" value="{{ report }}">
+                        <button type="submit" class="btn btn-primary">Send Report via Email</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+                    <!-- Back Button -->
+                    <a
+                    href="{% url 'discussion_detail' discussion_id=discussion.id %}"
+                    class="btn btn-secondary"
+                    >Back to Discussion</a
+                    >
 
-    <footer class="bg-dark text-center text-lg-start mt-4">
+<footer class="bg-dark text-center text-lg-start mt-4">
         <div class="container p-4">
             <p class="text-center">&copy; Capstone group 7</p>
         </div>

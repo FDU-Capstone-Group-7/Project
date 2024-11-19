@@ -13,7 +13,7 @@ from Indie_Game.view import discussionView
 from Indie_Game.view import updateView
 from Indie_Game.view import ratingSubmition
 from django.urls import path
-from Indie_Game.view.reportView import discussion_report_view
+from Indie_Game.view.discussionReportView import discussion_report_view
 from Indie_Game.view.sendEmailView import send_email
 
 
@@ -52,6 +52,7 @@ urlpatterns = [
     #report generation url
      path('discussions/<int:discussion_id>/report/',discussion_report_view, name='discussion_report'),
      path('discussions/<int:discussion_id>/report-send/', send_email, name='send_email'),
+     
 ]
 
 if settings.DEBUG:
