@@ -99,7 +99,12 @@
                       <div class="col-md-4">
                           <div class="card border-primary mb-3">
                               <a href="{% url 'game_homepage' game.homepage.slug %}" style="text-decoration: none;">
-                                  <h3 class="card-header" style="text-align: center; text-transform: uppercase; font-size: 50px; background-color: rgb(149, 106, 236);">
+                                  <h3 class="card-header" style="text-align: center; text-transform: uppercase; font-size: 40px; background-color: rgb(149, 106, 236);
+                                  white-space: nowrap;
+                                  overflow: hidden;
+                                  text-overflow: ellipsis;
+                                  width: 100%;
+                                  ">
                                       {{ game.title }}
                                   </h3>
                                   <div class="card-body" style="background-color: rgba(255, 41, 162, 0.679);">

@@ -87,8 +87,13 @@ def update_data(request,id):
     if request.method=='POST':
         pi=Game.objects.get(pk=id)
         fm=GameForm(request.POST ,request.FILES, instance=pi)
+        new_pictures = request.FILES.getlist('pictures')
         if fm.is_valid():
             fm.save()
+
+            Picture.objects.filter(game=pi).delete()
+            for picture in new_pictures:
+                Picture.objects.create(game=pi, image=picture)
             
         return HttpResponseRedirect(reverse('user_library'))
     

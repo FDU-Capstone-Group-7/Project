@@ -61,9 +61,15 @@ def update_update(request,slug,update_id):
 
 
     if request.method == 'POST':
+        new_pictures = request.FILES.getlist('update_pictures')
         form = UpdateForm(request.POST, instance=update_instance)
         if form.is_valid():
             form.save()
+            UpdatePicture.objects.filter(update=update_instance).delete()
+            
+            for picture in new_pictures:
+                UpdatePicture.objects.create(update=update_instance, image=picture)
+                
             return HttpResponseRedirect(f'/game/{homepage.slug}/')
     else:
         form = UpdateForm(instance=update_instance)

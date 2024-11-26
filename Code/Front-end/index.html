@@ -70,17 +70,22 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
-            <div class="card border-primary mb-3">
-                <h3 class="card-header">Card header</h3>
-                <div class="card-body">
-                  <h6 class="card-subtitle text-muted">Support card subtitle</h6>
+          {% for game in games %}
+          <a href="{% url 'game_homepage' game.homepage.slug %}" style="text-decoration: none;">
+            <div class="col-md-4">
+              <div class="card border-primary mb-3">
+                  <h3 class="card-header" style="text-align: center; font-size: 40px;background-color: rgb(154, 63, 219);">{{game.title}}</h3>
+                  <div class="card-body">
+                    <h6 class="card-subtitle text-muted"style="text-align: center;">{{game.publisher}}</h6>
+                  </div>
+                  <img src="{{game.cover_image.url}}" class="card-img-top"  alt="Card image cap" style="width: 100%; height: 200px; object-fit: cover;">
+                  <div class="card-body">
+                    <p class="card-text"style="text-align: center;font-size: 20px;">{{game.short_intro}}</p>
+                  </div>
                 </div>
-                <img src="assets/images/index.jpg" class="card-img-top" alt="Card image cap" style="width: 100%; height: 200px; object-fit: cover;">
-                <div class="card-body">
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
+          </div>
+        </a>
+      {% endfor %}
         </div>
         <div class="col-md-4">
             <div class="card border-primary mb-3">
@@ -142,66 +147,67 @@
                 </div>
               </div>
         </div>
-    </div>
-    <div class="d-flex justify-content-end">
-        <a href="all-games.html" class="btn btn-primary">View All Games</a>
-    </div>
+  </div>
+        <div class="d-flex justify-content-end">
+            <a href="all-games.html" class="btn btn-primary">View All Games</a>
+        </div>
 
 
-    <div class="trend-container mt-4">
-        <h2>Trending Now</h2>
-        <div id="trendingCarousel" class="carousel slide" data-bs-ride="false">
-            <div class="carousel-inner">
-                 <div class="carousel-item active">
-                     <div class="row">
-                        <div class="col">
-                            <div class="card border-secondary mb-3" style="max-width: 20rem;">
-                                <div class="card-header">Header 1</div>
-                                  <div class="card-body">
-                                      <img src="assets/images/example.png" class="card-img" alt="Example Image">
-                                   </div>
-                               </div>
-                           </div>
-                        <div class="col">
-                            <div class="card border-secondary mb-3" style="max-width: 20rem;">
-                                <div class="card-header">Header 2</div>
-                                  <div class="card-body">
-                                      <img src="assets/images/example.png" class="card-img" alt="Example Image">
-                                  </div>
-                             </div>
-                         </div>
-                        <div class="col">
-                            <div class="card border-secondary mb-3" style="max-width: 20rem;">
-                                <div class="card-header">Header 3</div>
-                                <div class="card-body">
-                                    <img src="assets/images/example.png" class="card-img" alt="Example Image">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card border-secondary mb-3" style="max-width: 20rem;">
-                                <div class="card-header">Header 4</div>
-                                <div class="card-body">
-                                    <img src="assets/images/example.png" class="card-img" alt="Example Image">
-                                </div>
-                             </div>
-                         </div>
+                        <!--  <div class="trend-container mt-4">
+                              <h2>Trending Now</h2>
+                              <div id="trendingCarousel" class="carousel slide" data-bs-ride="false">
+                                  <div class="carousel-inner">
+                                      <div class="carousel-item active">
+                                          <div class="row">
+                                              <div class="col">
+                                                  <div class="card border-secondary mb-3" style="max-width: 20rem;">
+                                                      <div class="card-header">Header 1</div>
+                                                        <div class="card-body">
+                                                            <img src="assets/images/example.png" class="card-img" alt="Example Image">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                              <div class="col">
+                                                  <div class="card border-secondary mb-3" style="max-width: 20rem;">
+                                                      <div class="card-header">Header 2</div>
+                                                        <div class="card-body">
+                                                            <img src="assets/images/example.png" class="card-img" alt="Example Image">
+                                                        </div>
+                                                  </div>
+                                              </div>
+                                              <div class="col">
+                                                  <div class="card border-secondary mb-3" style="max-width: 20rem;">
+                                                      <div class="card-header">Header 3</div>
+                                                      <div class="card-body">
+                                                          <img src="assets/images/example.png" class="card-img" alt="Example Image">
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="col">
+                                                  <div class="card border-secondary mb-3" style="max-width: 20rem;">
+                                                      <div class="card-header">Header 4</div>
+                                                      <div class="card-body">
+                                                          <img src="assets/images/example.png" class="card-img" alt="Example Image">
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                      </div>
+
+                                  
+                                  <button class="carousel-control-prev" type="button" data-bs-target="#trendingCarousel" data-bs-slide="prev">
+                                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                      <span class="visually-hidden">Previous</span>
+                                  </button>
+                                  <button class="carousel-control-next" type="button" data-bs-target="#trendingCarousel" data-bs-slide="next">
+                                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                      <span class="visually-hidden">Next</span>
+                                  </button>
+                              </div>
+                          </div>
                       </div>
-                </div>
 
-            
-            <button class="carousel-control-prev" type="button" data-bs-target="#trendingCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#trendingCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-    </div>
-</div>
-
+ -->
 
 <footer class="bg-dark text-center text-lg-start mt-4">
     <div class="container p-4">
